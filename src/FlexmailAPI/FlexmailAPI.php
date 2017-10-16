@@ -105,12 +105,7 @@ class FlexmailAPI implements FlexmailAPIInterface {
 
     // execute the call
     $response = $this->soapClient->__soapCall($service, array($request));
-
-    // check if we have get an error code, in which case we throw an exeception
-    if ($response->errorCode != 0 || $response->errorCode === ""):
-      throw new \Exception($response->errorMessage, $response->errorCode);
-    endif;
-
+    
     // return the response
     return $response;
   }
