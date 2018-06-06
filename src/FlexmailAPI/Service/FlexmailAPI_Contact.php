@@ -157,7 +157,7 @@ class FlexmailAPI_Contact extends FlexmailAPI implements FlexmailAPIServiceInter
    *      "groupIds" => array (                   // array (of Int (groupIds)) optional
    *          4566,
    *          4456
-   *      )
+   *      ),
    *      "emailAddressTypeItems" => array (      // array (of EmailAddressType) optional
    *          array (
    *              "referenceId" => "my-ref-001"
@@ -165,7 +165,12 @@ class FlexmailAPI_Contact extends FlexmailAPI implements FlexmailAPIServiceInter
    *          array (
    *              "referenceId" => "my-ref-002"
    *          )
-   *      )
+   *      ),
+   *      "allowDuplicates"   => false, // boolean opt
+   *      "overwrite"         => false, // boolean opt
+   *      "synchronise"       => false, // boolean opt
+   *      "referenceField"    => "email", // string opt
+   *      "allowBouncedOut"   => true, // boolean opt
    * );
    *
    * @param array $parameters Associative array with optional
@@ -270,7 +275,7 @@ class FlexmailAPI_Contact extends FlexmailAPI implements FlexmailAPIServiceInter
           array_push($emailAddressTypeItems, (object) $emailAddressType);
         endforeach;
         $request[$key] = $emailAddressTypeItems;
-      elseif ($key == "mailingListId"):
+      else:
         $request[$key] = $value;
       endif;
     endforeach;

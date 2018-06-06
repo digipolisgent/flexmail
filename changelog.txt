@@ -1,4 +1,10 @@
-Flexmail API PHP Wrapper                                            version: 2.0
+Flexmail API PHP Wrapper                                            version: 2.1
+
+06/05/2018: - Merged changes from thereference/master and
+              ewaldvanderveken/master forks
+            - Merged fixes from original API Wrapper 1.6 by Flexmail:
+              - Fixed issue in Contact service where not all params were
+                parsed in the request (06/02/2017)
 
 15/12/2015: - Changed file structure
             - Initialized Composer package
@@ -7,7 +13,7 @@ Flexmail API PHP Wrapper                                            version: 2.0
             - Fixed incorrect date in changelog
 
 29/01/2015: - Fixed support for Database Manager module:
-                Contact->create 
+                Contact->create
                 Contact->update
 
 29/10/2014: - Fixed incorrect array to object case
