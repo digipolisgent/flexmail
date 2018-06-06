@@ -7,53 +7,56 @@
 namespace Finlet\flexmail\FlexmailAPI\Service;
 
 use Finlet\flexmail\FlexmailAPI\FlexmailAPI;
-use Finlet\flexmail\FlexmailAPI\Service\FlexmailAPIServiceInterface;
 
-class FlexmailAPI_Form extends FlexmailAPI implements FlexmailAPIServiceInterface {
-  /**
-   * Return list of all forms in a Flexmail account
-   *
-   * Parmeters example:
-   * ------------------
-   * $parameters = array (
-   * );
-   *
-   * @return forms
-   */
-  public function getAll() {
-    $request = NULL;
+class FlexmailAPI_Form extends FlexmailAPI implements FlexmailAPIServiceInterface
+{
 
-    $response = $this->execute("GetForms", $request);
-    return FlexmailAPI::stripHeader($response, $this->config->get('debug_mode'));
-  }
+    /**
+     * Return list of all forms in a Flexmail account
+     *
+     * Parmeters example:
+     * ------------------
+     * $parameters = array (
+     * );
+     *
+     * @return forms
+     */
+    public function getAll()
+    {
+        $request = null;
 
-  /**
-   * Return list of all user submitted date for a given form and optionally
-   * a campaign
-   *
-   * Parmeters example:
-   * ------------------
-   * $parameters = array (
-   *     "formId"     =>  12345, //int mandatory
-   *     "campaignId" =>  12345,  /int optional
-   * );
-   *
-   * @param Array $parameters Associative array with formId and optional
-   *               campaignId
-   *
-   * @return formdata
-   */
-  public function getResults($parameters) {
-    $request = array();
+        $response = $this->execute("GetForms", $request);
+        return FlexmailAPI::stripHeader($response,
+          $this->config->get('debug_mode'));
+    }
 
-    foreach ($parameters as $key => $value):
-      $request[$key] = $value;
-    endforeach;
+    /**
+     * Return list of all user submitted date for a given form and optionally
+     * a campaign
+     *
+     * Parmeters example:
+     * ------------------
+     * $parameters = array (
+     *     "formId"     =>  12345, //int mandatory
+     *     "campaignId" =>  12345,  /int optional
+     * );
+     *
+     * @param Array $parameters Associative array with formId and optional
+     *               campaignId
+     *
+     * @return formdata
+     */
+    public function getResults($parameters)
+    {
+        $request = [];
 
-    $response = $this->execute("GetFormResults", $request);
+        foreach ($parameters as $key => $value):
+            $request[$key] = $value;
+        endforeach;
 
-    return FlexmailAPI::stripHeader($response, $this->config->get('debug_mode'));
-  }
+        $response = $this->execute("GetFormResults", $request);
+
+        return FlexmailAPI::stripHeader($response,
+          $this->config->get('debug_mode'));
+    }
 }
-
-?>

@@ -5,6 +5,7 @@ Flexmail API PHP Wrapper                                            version: 2.1
             - Merged fixes from original API Wrapper 1.6 by Flexmail:
               - Fixed issue in Contact service where not all params were
                 parsed in the request (06/02/2017)
+            - Reformatted code
 
 15/12/2015: - Changed file structure
             - Initialized Composer package

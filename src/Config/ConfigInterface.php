@@ -6,8 +6,7 @@
 
 namespace Finlet\flexmail\Config;
 
-interface ConfigInterface {
+interface ConfigInterface
+{
 
 }
-
-?>

@@ -6,23 +6,22 @@
 
 namespace Finlet\flexmail\Config;
 
-use Finlet\flexmail\Config\ConfigInterface;
+class Config implements ConfigInterface
+{
 
-class Config implements ConfigInterface {
+    private $container = [];
 
-  private $container = array();
-
-  public function get($key) {
-    return $this->set($key);
-  }
-
-  public function set($key, $value = NULL) {
-    if ($value !== NULL) {
-      $this->container[$key] = $value;
+    public function get($key)
+    {
+        return $this->set($key);
     }
 
-    return $this->container[$key];
-  }
-}
+    public function set($key, $value = null)
+    {
+        if ($value !== null) {
+            $this->container[$key] = $value;
+        }
 
-?>
+        return $this->container[$key];
+    }
+}

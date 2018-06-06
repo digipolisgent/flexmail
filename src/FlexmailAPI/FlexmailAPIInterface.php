@@ -6,8 +6,7 @@
 
 namespace Finlet\flexmail\FlexmailAPI;
 
-interface FlexmailAPIInterface {
+interface FlexmailAPIInterface
+{
 
 }
-
-?>

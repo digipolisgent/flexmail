@@ -13,9 +13,9 @@ PHP's SOAP extension: http://www.php.net/manual/en/book.soap.php
 
 Usage:
 ------
-Update the config.php file replacing the required information: USER_ID and 
-USER_TOKEN with your personal Flexmail User Id and User Token, which can be 
-found within the Flexmail platform. Browse to Home > Profile to view your 
+Update the config.php file replacing the required information: USER_ID and
+USER_TOKEN with your personal Flexmail User Id and User Token, which can be
+found within the Flexmail platform. Browse to Home > Profile to view your
 User ID and User Token
 
 Within you existing PHP code require the FlexmailAPI wrapper
@@ -30,7 +30,7 @@ To call a service on an objet: Request the instance, execute the function.
 Required parameters can be found within the FlexmailAPI_Class files themselfs or
 on: http://www.flexmail.eu/en/api/manual
 
-<?php 
+<?php
 
 $response = FlexmailAPI::service("Contact")->create(array(
     "mailingListId"    => 10000,
@@ -69,13 +69,13 @@ FlexmailAPI_Campaign
     getSummary
     getTrackingLinks
     getTrackingLinkHits
-    
+
 
 FlexmailAPI_Category
     create
     update
     delete
-    getAll    
+    getAll
 
 FlexmailAPI_Contact
     create

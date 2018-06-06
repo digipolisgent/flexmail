@@ -13,11 +13,11 @@ define("FLEXMAIL_WSDL", "http://soap.flexmail.eu/3.0.0/flexmail.wsdl");
 define("FLEXMAIL_SERVICE", "http://soap.flexmail.eu/3.0.0/flexmail.php");
 
 
-// Toggle debug mode. 
-// If debug mode is on, the response header, errorCode and errorMessage will be 
+// Toggle debug mode.
+// If debug mode is on, the response header, errorCode and errorMessage will be
 //                                                          returned as an object
-// 
+//
 // If debug mode is off, methods that provide a relevant response parameter
 //                                          (like getters) will return them
-//                                                          
+//
 define("DEBUG_MODE", true);
