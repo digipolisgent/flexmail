@@ -69,7 +69,9 @@ class FlexmailAPI implements FlexmailAPIInterface {
     endif;
 
     foreach ($arr as $key => $val):
-      if (is_array($val) AND $key != "custom" AND substr($key, -3) != "Ids"):
+      if(is_array($val) AND $key == "groups"):
+        $parent->$key = $val;
+      elseif(is_array($val) AND $key != "custom" AND substr($key, -3) != "Ids"):
         $parent->$key = $this->parseArray($val, new \stdClass);
       else:
         $parent->$key = $val;
@@ -103,12 +105,7 @@ class FlexmailAPI implements FlexmailAPIInterface {
 
     // execute the call
     $response = $this->soapClient->__soapCall($service, array($request));
-
-    // check if we have get an error code, in which case we throw an exeception
-    if ($response->errorCode != 0 || $response->errorCode === ""):
-      throw new \Exception($response->errorMessage, $response->errorCode);
-    endif;
-
+    
     // return the response
     return $response;
   }
