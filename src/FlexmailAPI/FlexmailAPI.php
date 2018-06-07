@@ -24,11 +24,13 @@ class FlexmailAPI implements FlexmailAPIInterface
     }
 
     /**
-     * Reove header/error codes from the response
+     * Remove header/error codes from the response
      *
-     * @param stdClass $response The response from the API
+     * @param \stdClass
+     *   $response The response from the API
      *
-     * @return stdClass The same stdClass without the header information
+     * @return \stdClass
+     *   The same stdClass without the header information
      */
     public static function stripHeader($response, $debug_mode = false)
     {

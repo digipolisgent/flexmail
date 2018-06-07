@@ -391,11 +391,57 @@ class FlexmailAPI_Contact extends FlexmailAPI implements FlexmailAPIServiceInter
      */
     public function history($parameters)
     {
-        $request = FlexmailAPI_Email::parseArray($parameters);
+        $request = $this->parseArray($parameters);
 
         $response = $this->execute("GetEmailAddressHistory", $request);
         return FlexmailAPI::stripHeader($response,
           $this->config->get('debug_mode'));
     }
 
+    /**
+     * Request complete list of subscribed lists per subscriber.
+     *
+     * Parameters example:
+     * ------------------
+     * $parameters = array (
+     *      "mailingListIds"                  => array (               // array mandatory
+     *          int,                                                   // int mandatory
+     *          int,                                                   // int mandatory
+     *          ...
+     *      )
+     *      "emailAddressTypeItems"           => array (               // array mandatory
+     *          array (                                                // array mandatory
+     *              "emailAddress"            => string                // string mandatory
+     *          ),
+     *          array (                                                // array mandatory
+     *              "emailAddress"            => string                // string mandatory
+     *          ),
+     *          ...
+     *      )
+     * );
+     *
+     * @param array $parameters Associative arrays with emailAddress and
+     *                          mailingListIds.
+     *
+     * @return \stdClass
+     */
+    public function getEmailAddressSubscriptions($parameters)
+    {
+        $request = [];
+
+        $castToObject = function ($value) {
+            return is_array($value) ? (object) $value : $value;
+        };
+
+        if (isset($parameters['emailAddressTypeItems'])) {
+            $request['emailAddressTypeItems'] = array_map($castToObject, $parameters['emailAddressTypeItems']);
+        }
+
+        if (isset($parameters['mailingListIds'])) {
+            $request['mailingListIds'] = array_map($castToObject, $parameters['mailingListIds']);
+        }
+
+        $response = $this->execute('GetEmailAddressSubscriptions', $request);
+        return FlexmailAPI::stripHeader($response);
+    }
 }
